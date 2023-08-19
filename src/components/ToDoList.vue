@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TodoItem } from "../types";
 import { computed, ref, toRefs } from "vue";
-
+import { useToggle } from "@vueuse/core";
 const $p = withDefaults(
   defineProps<{
     data: TodoItem;
@@ -11,9 +11,7 @@ const $p = withDefaults(
     hello: "test1",
   }
 );
-
 const { data } = toRefs($p);
-
 const emit = defineEmits<{
   (e: "delete", data: TodoItem): void;
   (e: "edit", data: TodoItem): void;
@@ -21,18 +19,15 @@ const emit = defineEmits<{
   (e: "checked", data: TodoItem, checkedValue: boolean): void;
 }>();
 // const [value, toggle] = useToggle();
-
 // reactive values
 const editedItem = ref<TodoItem | undefined>();
 const editedTask = ref<string | undefined>();
 const checkedValue = ref<boolean>(data.value?.completed ?? false);
-
 // computed values
 const inputValue = computed(() => {
   if (!editedTask.value) {
     return;
   }
-
   return editedTask.value;
 });
 </script>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from "vue";
-
 const $p = withDefaults(
   defineProps<{
     actionKey?: string | null;
@@ -13,15 +12,12 @@ const $p = withDefaults(
     isActive: false,
   }
 );
-
 const emit = defineEmits<{
   (e: "click", actionKey: string, event: Event): void;
 }>();
-
 function click(event: Event) {
   return emit("click", `${actionKey.value}`, event);
 }
-
 const actionKey = computed(() => {
   return $p.actionKey;
 });
