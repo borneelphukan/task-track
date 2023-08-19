@@ -35,7 +35,10 @@ Your tasks are automatically saved when you close the app. This ensures you can 
 
 ## Installation
 
-1. Clone this repository to your local machine:
+1. Clone this repository to your local machine: ```git clone https://github.com/your-username/task-track.git```
+2. Navigate to the project directory: ```cd task-track```
+3. Install required dependencies using ```pnpm install```
+4. Start the development server: ```pnpm run dev```
 5. Open your browser and visit `http://localhost:8080` (or the port indicated in the console) to access the app.
 
 ## Contributing
