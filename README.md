@@ -2,7 +2,7 @@
 
 Task Track is a user-friendly to-do app developed using Vue.js and TailwindCSS. This app is designed to help you efficiently manage your tasks and boost your productivity.
 
-![App Screenshot](screenshot.png)
+![App Screenshot](Screenshot.png)
 
 ## Features
 
