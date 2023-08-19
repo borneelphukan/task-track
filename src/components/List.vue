@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { TodoItem } from "../types";
 import { computed, ref, toRefs } from "vue";
-import { useToggle } from "@vueuse/core";
 
 const $p = withDefaults(
   defineProps<{

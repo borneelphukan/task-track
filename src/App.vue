@@ -2,7 +2,7 @@
 import { computed, onUpdated, reactive, ref } from "vue";
 import { useStorage } from "@vueuse/core";
 import type { TodoItem, TodoListState } from "./types";
-import ToDoList from "./components/ToDoList.vue";
+import List from "./components/List.vue";
 import Button from "./Button.vue";
 
 // Template Ref declarations
@@ -238,15 +238,13 @@ function getdate(startDate: string, endDate?: string) {
       <div v-if="bulkToggle" class="flex justify-center my-4">
         <div class="flex flex-col" title="Add single task relative">
           <label class="pb-2 text-xl" for="story"
-            >Enter your list of tasks here:</label
+            >Enter your tasks in Bulk</label
           >
 
           <textarea
             id="story"
             v-model="bulkRawTask"
-            placeholder="− Task 1
-  − Task 2
-  − Task 3"
+            placeholder="Enter Bulk Tasks"
             name="story"
             rows="3"
             cols="33"
@@ -327,7 +325,7 @@ function getdate(startDate: string, endDate?: string) {
             :key="item.taskName"
             class="flex justify-between my-2 h-10"
           >
-            <ToDoList
+            <List
               :data="item"
               @delete="deleteTask"
               @save="saveEditedItem"
