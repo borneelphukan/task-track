@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TodoItem } from "../types";
 import { computed, ref, toRefs } from "vue";
-import { useToggle } from "@vueuse/core";
+
 const $p = withDefaults(
   defineProps<{
     data: TodoItem;
@@ -33,8 +33,7 @@ const inputValue = computed(() => {
 </script>
 
 <template>
-  <!-- <button @click="toggle()">Toggle</button>
-    <p>Value: {{ value ? "ON" : "OFF" }}</p> -->
+
   <div class="flex w-full justify-between">
     <!--Taskname-->
     <div class="w-[20%] flex justify-center items-center h-10">
@@ -54,11 +53,6 @@ const inputValue = computed(() => {
     <div class="w-[20%] flex justify-center items-center h-10">
       <p>{{ $filters.formatDate(data.endDate) }}</p>
     </div>
-
-    <!--Duration -->
-    <!-- <div class="">
-        <p>{{ $filters.duration(data.startDate, data.endDate) }}</p>
-      </div> -->
 
     <!--Edit Textbox-->
     <div v-show="editedItem === data" class="flex">

@@ -3,7 +3,8 @@ import { computed, onUpdated, reactive, ref } from "vue";
 import { useStorage } from "@vueuse/core";
 import type { TodoItem, TodoListState } from "./types";
 import ToDoList from "./components/ToDoList.vue";
-import MyButton from "./components/MyButton.vue";
+import Button from "./components/Button.vue";
+
 // Template Ref declarations
 const rawTask = ref("");
 const bulkRawTask = ref("");
@@ -12,6 +13,7 @@ const currentTaskList = ref<TodoListState>("all");
 const checkedValue = ref<boolean>(false);
 const bulkToggle = ref<boolean>(false);
 const toggleView = ref<boolean>(false);
+
 // Reactive computed getters:
 function setCurrentTaskList(list: TodoListState) {
   currentTaskList.value = list;
@@ -35,6 +37,7 @@ onUpdated(() => {
   const completedCheckBox = checkedValue.value;
   return completedCheckBox;
 });
+
 // ID generator
 let guid = () => {
   let s4 = () => {
@@ -62,6 +65,7 @@ let guid = () => {
 function deleteTask(data: TodoItem) {
   tasks.value.delete(data);
 }
+
 /* Save edited Item */
 function saveEditedItem(data: TodoItem, inputValue: string) {
   let editedTask = inputValue;
@@ -75,6 +79,7 @@ function saveEditedItem(data: TodoItem, inputValue: string) {
   };
   tasks.value = new Set(tasksClone);
 }
+
 /* Save completed Item */
 function saveCheckedItem(data: TodoItem, completedTask?: boolean) {
   const now = new Date();
@@ -88,6 +93,7 @@ function saveCheckedItem(data: TodoItem, completedTask?: boolean) {
   };
   tasks.value = new Set(tasksClone);
 }
+
 /* Reveal single task */
 function SingleTaskReveal() {
   const BulkCandidateString = bulkRawTask.value; // input value
@@ -106,6 +112,7 @@ function SingleTaskReveal() {
     });
   bulkRawTask.value = "";
 }
+
 /* Find duplicated names */
 function isDuplicateInActiveList(
   list: TodoItem[],
@@ -119,12 +126,14 @@ function isDuplicateInActiveList(
   }
   return false;
 }
+
 /* Submit task */
 function submitTask() {
   if (!rawTask.value) return;
   addTask(rawTask.value);
   rawTask.value = "";
 }
+
 /* Add single task */
 function addTask() {
   if (isDuplicateInActiveList(activeTasks.value, rawTask.value, "taskName")) {
@@ -153,6 +162,7 @@ function addBulkTask(taskName: string) {
     runningTime: ref("0"),
   });
 }
+
 /* Task Duration */
 function getdate(startDate: string, endDate?: string) {
   const started = new Date(startDate).getTime();

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+
 const $p = withDefaults(
   defineProps<{
     actionKey?: string | null;
@@ -24,7 +25,6 @@ const actionKey = computed(() => {
 </script>
 
 <!-- Visual jsx -->
-
 <template>
   <button
     :class="{ active: isActive }"
